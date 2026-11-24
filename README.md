@@ -1,5 +1,9 @@
 # GSO-RL — Guided Strategic Oscillation with Reinforcement Learning
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24508704.svg)](https://doi.org/10.5281/zenodo.24508704)
+[![CI](https://github.com/JuanAdaySiverioGlez/gso-rl/actions/workflows/ci.yml/badge.svg)](https://github.com/JuanAdaySiverioGlez/gso-rl/actions/workflows/ci.yml)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+
 > **Status: v0.1.0.** The core library works and is tested, with a blank template and a complete
 > example (0/1 knapsack). See [ROADMAP.md](ROADMAP.md).
 
@@ -194,6 +198,10 @@ If you use GSO-RL, its code or its documentation, please cite:
   doi     = {10.1016/j.eswa.2026.134651}
 }
 ```
+
+To cite the software itself (a specific version, for reproducibility), use its archive on Zenodo:
+[doi:10.5281/zenodo.24508704](https://doi.org/10.5281/zenodo.24508704) (all versions; each
+version has its own DOI on that page).
 
 ## License
 

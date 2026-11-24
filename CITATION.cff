@@ -4,6 +4,9 @@ title: "GSO-RL: Guided Strategic Oscillation with Reinforcement Learning"
 type: software
 license: Apache-2.0
 repository-code: "https://github.com/JuanAdaySiverioGlez/gso-rl"
+doi: "10.5281/zenodo.24508704"
+version: "0.1.0"
+date-released: "2026-11-24"
 authors:
   - family-names: "Siverio-González"
     given-names: "Juan Aday"
