@@ -1,0 +1,22 @@
+% "Where to move from S?" Adapted from the CAEPIA 2026 slides.
+\documentclass[border=0pt]{standalone}
+\input{common.tex}
+\begin{document}
+\begin{tikzpicture}[>=Stealth]
+  \draw[->, gray] (-0.2,0) -- (11.9,0) node[below left, font=\small] {solution space};
+  \draw[->, gray] (0,-0.2) -- (0,2.6) node[left, font=\small] {$f$};
+  \draw[very thick, gray!70!black] plot[smooth, tension=0.6] coordinates {
+    (0.2,1.7) (1,0.7) (1.8,1.35) (2.4,0.98) (3.2,0.4) (4.4,1.85) (5.6,0.95)
+    (6.6,1.5) (8.2,0.15) (9.6,1.5) (10.6,0.8) (11.6,1.55)};
+  \coordinate (S) at (2.4,0.98);
+  \draw[->, ultra thick, ColMa] (S) -- (3.15,0.5);
+  \node[ColMa, font=\bfseries, anchor=north] at (3.35,0.42) {M1};
+  \draw[->, ultra thick, ColMb] (S) .. controls (3.3,2.3) and (4.6,2.3) .. (5.5,1.1);
+  \node[ColMb, font=\bfseries] at (4.4,2.38) {M2};
+  \draw[->, ultra thick, ColMc, dashed] (S) .. controls (4,3.5) and (9.2,3.3) .. (10.5,0.95);
+  \node[ColMc, font=\bfseries] at (7.7,3.0) {M3};
+  \fill[Purple] (S) circle (3.5pt);
+  \node[above left=0pt and 1pt of S, font=\bfseries, Purple] {$S$};
+  \node[font=\Large\bfseries, Purple] at (1.6,2.15) {?};
+\end{tikzpicture}
+\end{document}

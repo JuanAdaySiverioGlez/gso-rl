@@ -1,0 +1,36 @@
+% GCM update: the five cases A-E. Redrawn after Fig. 3 of the article.
+\documentclass[border=0pt]{standalone}
+\input{common.tex}
+\begin{document}
+\begin{tikzpicture}[>=Stealth, font=\small,
+  st/.style={rectangle, rounded corners, draw=gray!70!black, fill=gray!8, thick, align=center, inner sep=5pt},
+  q/.style={rectangle, rounded corners, draw=orange!60!black, fill=orange!10, thick, align=center, inner sep=5pt},
+  res/.style={rectangle, rounded corners, draw=Purple, fill=Purple!8, thick, align=center,
+              text width=3.1cm, inner sep=5pt, font=\scriptsize},
+  lab/.style={font=\scriptsize, fill=white, inner sep=1.5pt},
+  arr/.style={->, thick, gray!30!black}]
+  \node[st] (n) at (0,0) {New solution $S$};
+  \node[st, below=0.55cm of n] (c) {Closest guide $G$,\quad $d_{\min} = d(S, G)$};
+
+  \node[q] (k) at (-4.2,-3.0) {Better than $G$?\\ $f(S) < f(G)$};
+  \node[q] (u) at ( 4.2,-3.0) {Better than the worst elite guide?\\ $f(S) < f(G^{\mathrm{elite}}_{\mathrm{worst}})$};
+
+  \draw[arr] (n) -- (c);
+  \draw[arr] (c.west) -| node[lab, pos=0.75, left=2pt, align=right] {$d_{\min} \le \delta_{\max}$\\ known region} (k.north);
+  \draw[arr] (c.east) -| node[lab, pos=0.75, right=2pt, align=left] {$d_{\min} > \delta_{\max}$\\ new region} (u.north);
+
+  \node[res] (A) at (-6.0,-5.4) {\textbf{[A]} $S$ replaces $G$:\\ the region drifts};
+  \node[res] (B) at (-2.4,-5.4) {\textbf{[B]} $S$ is mapped to ring\\ $i = \lfloor n_{\mathrm{rings}}\, d_{\min} / \delta_{\max} \rfloor$};
+  \node[res] (C) at ( 2.0,-5.4) {\textbf{[C]} $S$ replaces the\\ worst elite guide};
+  \node[q, font=\scriptsize] (x) at (6.2,-5.4) {Expired guide in\\ the diversity zone?};
+  \node[res] (D) at ( 4.4,-7.7) {\textbf{[D]} $S$ replaces the\\ expired guide};
+  \node[res] (E) at ( 8.0,-7.7) {\textbf{[E]} $S$ is anchored to the outermost ring of $G$ (memory full)};
+
+  \draw[arr] (k) -- node[lab, above left]  {yes} (A);
+  \draw[arr] (k) -- node[lab, above right] {no}  (B);
+  \draw[arr] (u) -- node[lab, above left]  {yes} (C);
+  \draw[arr] (u) -- node[lab, above right] {no}  (x);
+  \draw[arr] (x) -- node[lab, above left]  {yes} (D);
+  \draw[arr] (x) -- node[lab, above right] {no}  (E);
+\end{tikzpicture}
+\end{document}

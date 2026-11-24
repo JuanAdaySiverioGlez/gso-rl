@@ -1,0 +1,6 @@
+#!/bin/bash
+# irace calls this file (scenario.txt: targetRunner = "./target-runner"); it runs target_runner.py.
+# R sets LD_LIBRARY_PATH for its own libraries, and a Python from conda or Homebrew may then fail to
+# start ("GLIBC_2.34 not found"): clear it for the runs.
+unset LD_LIBRARY_PATH
+exec python3 "$(dirname "$0")/target_runner.py" "$@"

@@ -1,0 +1,42 @@
+% Shared preamble of the GSO-RL documentation figures.
+% Compiled with latex (DVI) + dvisvgm; see ../build.sh.
+\def\pgfsysdriver{pgfsys-dvisvgm.def}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{amsmath, amssymb}
+\usepackage{tikz}
+\usetikzlibrary{positioning, shapes, arrows.meta, calc, fit, backgrounds}
+
+% Palette
+\definecolor{Purple}{RGB}{102, 0, 153}
+\colorlet{ColMa}{green!50!black}   % macro-move M1
+\colorlet{ColMb}{blue!70!black}    % macro-move M2
+\colorlet{ColMc}{orange!85!black}  % macro-move M3
+\definecolor{cGa}{RGB}{38, 166, 154}
+\definecolor{cGb}{RGB}{229, 96, 76}
+\definecolor{cGc}{RGB}{235, 165, 40}
+\definecolor{cGd}{RGB}{125, 125, 215}
+\definecolor{cGe}{RGB}{190, 60, 150}
+
+% White background so figures stay readable in dark mode. The white rectangle lives on the
+% "background" layer; figures draw their own backdrops on "behind", which sits above it.
+\pgfdeclarelayer{behind}
+\pgfsetlayers{background,behind,main}
+\tikzset{every picture/.append style={show background rectangle,
+  background rectangle/.style={fill=white, draw=none}, inner frame sep=8pt}}
+% NOTE: with dvisvgm, text placed after a \color{...} group inside the same node is misplaced.
+% Put differently coloured pieces of text in separate nodes.
+
+\newcommand{\yes}{{\color{green!50!black}\checkmark}}
+\newcommand{\nope}{{\color{red!70!black}$\boldsymbol{\times}$}}
+
+% A region: guide with three concentric rings.  \guia[style]{x}{y}{color}{label}
+\newcommand{\guia}[5][]{%
+  \fill[#4!10, #1] (#2,#3) circle (1.05);
+  \fill[#4!20, #1] (#2,#3) circle (0.7);
+  \fill[#4!35, #1] (#2,#3) circle (0.35);
+  \foreach \r in {0.35,0.7,1.05} \draw[#4, #1] (#2,#3) circle (\r);
+  \fill[#4!80!black, #1] (#2,#3) circle (2pt);
+  \node[#4!75!black, font=\scriptsize\bfseries, #1] at (#2,#3+1.22) {#5};
+}

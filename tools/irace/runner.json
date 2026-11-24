@@ -1,0 +1,16 @@
+{
+  "command": [
+    "../../build/knapsack",
+    "{instance}"
+  ],
+  "fixed": [
+    "--budget.seconds=0",
+    "--budget.macro_moves=600",
+    "--reward.type=eq3",
+    "--output.print_config=false",
+    "--output.print_summary=false"
+  ],
+  "seed": "--seed={seed}",
+  "cost_regex": "best cost: (\\S+)",
+  "timeout": 600
+}

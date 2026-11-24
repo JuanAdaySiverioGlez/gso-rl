@@ -1,0 +1,17 @@
+GSO-RL — Guided Strategic Oscillation with Reinforcement Learning
+Copyright 2026 Juan Aday Siverio-González
+Universidad de La Laguna (Spain)
+
+This product includes software developed in the GSO-RL project:
+https://github.com/JuanAdaySiverioGlez/gso-rl
+
+GSO-RL was introduced in:
+  J. A. Siverio-González, B. Melián-Batista, J. M. Moreno-Vega.
+  Guided strategic oscillation with reinforcement learning for the shared customer
+  collaboration vehicle routing problem.
+  Expert Systems with Applications 334 (2027) 134651.
+  https://doi.org/10.1016/j.eswa.2026.134651
+
+Under the Apache License 2.0 (Section 4.d), this NOTICE file must be kept in any
+redistribution of this software or of works derived from it.
+If you use GSO-RL in research, please cite the article above.

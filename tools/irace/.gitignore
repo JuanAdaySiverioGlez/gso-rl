@@ -1,0 +1,3 @@
+# irace output when it is run inside this folder
+irace.Rdata
+*.log

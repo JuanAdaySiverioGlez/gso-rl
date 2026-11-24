@@ -1,0 +1,11 @@
+## irace scenario for a GSO-RL program (docs/07-tuning.md). Copy this folder's files to a tuning
+## directory, edit runner.json and the instance lists, then run:   irace --scenario scenario.txt
+parameterFile   = "parameters.txt"
+targetRunner    = "./target-runner"
+trainInstancesDir  = ""
+trainInstancesFile = "train-instances.txt"   # one instance per line, as your program takes it
+maxExperiments  = 2000                        # runs irace may spend; more = better tuning
+parallel        = 8                           # runs at the same time (cores)
+deterministic   = 0                           # 1 if your program ignores the seed
+## testInstancesFile = "test-instances.txt"   # instances never seen while tuning, to evaluate
+## testNbElites      = 3

@@ -1,0 +1,23 @@
+% The learning loop of one ring. Adapted from the CAEPIA 2026 slides.
+\documentclass[border=0pt]{standalone}
+\input{common.tex}
+\begin{document}
+\begin{tikzpicture}[>=Stealth, font=\small,
+  box/.style={rectangle, rounded corners, thick, align=center, minimum width=4.4cm, minimum height=1.0cm}]
+  \node[box, draw=Purple, fill=Purple!10] (ag) {\textbf{Agent of the ring}\\ \scriptsize multi-armed bandit (e.g. UCB1)};
+  \node[box, draw=gray!70!black, fill=gray!8, below=1.6cm of ag] (env) {\textbf{Search}\\ \scriptsize solution space};
+  \node[box, draw=orange!70!black, fill=orange!10, below=1.0cm of env] (ccm) {\textbf{CCM}\\ \scriptsize Current Context Memory};
+
+  \draw[->, very thick, Purple] ($(ag.south west)+(0.7,0)$)
+    -- node[left, font=\scriptsize, align=right] {macro-move\\ $m_t$} ($(env.north west)+(0.7,0)$);
+  \draw[->, very thick, gray!70!black] ($(env.north east)+(-0.7,0)$)
+    -- node[left, font=\scriptsize, align=right] {region of $S$\\ (guide, ring)} ($(ag.south east)+(-0.7,0)$);
+  \draw[->, very thick, gray!70!black] (env) -- node[right, font=\scriptsize] {$f(S_t)$} (ccm);
+  \draw[->, very thick, orange!70!black] (ccm.east) -- ++(0.6,0)
+    |- node[pos=0.25, right, font=\scriptsize, align=left] {delayed\\ reward $r_t$} (ag.east);
+
+  \node[below=0.45cm of ccm, font=\small, align=center] (eq)
+    {$\displaystyle r_t \;=\; \alpha\,\frac{f(S_{t-k}) - f(S_t)}{f(S_{t-k})} \;+\; \beta\,\frac{f(S^*) - f(S_t)}{f(S^*)}$\\[3pt]
+     \scriptsize default reward (Eq.~3 of the article), $k = SZ_{ccm}$};
+\end{tikzpicture}
+\end{document}

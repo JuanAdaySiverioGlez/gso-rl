@@ -1,0 +1,43 @@
+# Build and test on every push and pull request: Linux (GCC, Clang), macOS (Apple Clang),
+# Windows (MSVC), and Linux with AddressSanitizer and UndefinedBehaviorSanitizer.
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: Linux GCC, os: ubuntu-latest, cxx: g++, flags: "" }
+          - { name: Linux Clang, os: ubuntu-latest, cxx: clang++, flags: "" }
+          - { name: macOS Apple Clang, os: macos-latest, cxx: clang++, flags: "" }
+          - { name: Windows MSVC, os: windows-latest, cxx: "", flags: "" }
+          - { name: Linux sanitizers, os: ubuntu-latest, cxx: g++,
+              flags: "-fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover=all" }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Allow AddressSanitizer on recent kernels
+        if: matrix.name == 'Linux sanitizers'
+        run: sudo sysctl vm.mmap_rnd_bits=28
+      - name: Configure
+        shell: bash
+        run: |
+          args=(-S . -B build -DCMAKE_BUILD_TYPE=Release)
+          [ -n "${{ matrix.cxx }}" ] && args+=(-DCMAKE_CXX_COMPILER=${{ matrix.cxx }})
+          [ -n "${{ matrix.flags }}" ] && args+=("-DCMAKE_CXX_FLAGS=${{ matrix.flags }}")
+          cmake "${args[@]}"
+      - name: Build
+        run: cmake --build build --config Release --parallel 4
+      - name: Test
+        working-directory: build
+        run: ctest -C Release --output-on-failure

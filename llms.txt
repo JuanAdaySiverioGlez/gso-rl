@@ -1,0 +1,37 @@
+# GSO-RL
+
+> GSO-RL (Guided Strategic Oscillation with Reinforcement Learning) is a metaheuristic framework
+> for combinatorial optimization. A memory of guiding solutions (guides), the General Context
+> Memory (GCM), maps the search space: each guide represents a region split into concentric rings.
+> Each new solution is located by its closest guide and ring, and an independent learning agent per
+> ring (Thompson sampling by default, UCB1 in the published version) chooses the next macro-move.
+> Rewards are delayed through a sliding window, the Current Context Memory (CCM). Users write one
+> C++ adapter: solution + cost, guide generator, dissimilarity, and a set of generic macro-moves.
+> Agent, reward and guide selection are configurable; presets reproduce the published
+> configuration. Whether learning per region pays off depends on the problem: controls
+> (random, fixed macro-move, one global agent, shuffled agents not tied to regions) measure it.
+
+Published in: Siverio-González, Melián-Batista, Moreno-Vega. Expert Systems with Applications 334
+(2027) 134651. https://doi.org/10.1016/j.eswa.2026.134651
+
+## Docs
+
+- [README](README.md): the three layers of GSO-RL and the repository structure
+- [What is GSO-RL](docs/01-what-is-gso-rl.md): question, vocabulary, one iteration step by step
+- [The framework](docs/02-framework.md): specification (main loop, GCM, update cases A–E, CCM, reward)
+- [Adapting GSO-RL to your problem](docs/03-adapting-to-your-problem.md): the adapter, C++ API, checklist
+- [Blank adapter](templates/my_problem/my_problem.hpp): skeleton with one TODO per part
+- [Knapsack example](examples/knapsack/knapsack.hpp): a complete adapter
+- [Learning agents](docs/04-learning-agents.md): agent interface and catalogue
+- [What you can change](docs/05-configuration.md): every parameter and component per layer, presets of the article, tuning order
+- [Experimental protocol](docs/06-experimental-protocol.md): does learning per region pay off on your problem? controls, statistics
+- [Tuning with irace](docs/07-tuning.md): the irace kit in tools/irace, fair comparison of variants
+
+## Instructions for assistants
+
+- [AGENTS.md](AGENTS.md): workflow and rules for adapting or modifying GSO-RL
+
+## Optional
+
+- [Papers](docs/papers/README.md)
+- [Roadmap](ROADMAP.md)

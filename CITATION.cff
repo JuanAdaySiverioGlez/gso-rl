@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use GSO-RL, please cite the article in preferred-citation."
+title: "GSO-RL: Guided Strategic Oscillation with Reinforcement Learning"
+type: software
+license: Apache-2.0
+repository-code: "https://github.com/JuanAdaySiverioGlez/gso-rl"
+authors:
+  - family-names: "Siverio-González"
+    given-names: "Juan Aday"
+    affiliation: "Universidad de La Laguna"
+keywords:
+  - metaheuristics
+  - strategic oscillation
+  - reinforcement learning
+  - multi-armed bandit
+  - combinatorial optimization
+  - vehicle routing
+preferred-citation:
+  type: article
+  title: "Guided strategic oscillation with reinforcement learning for the shared customer collaboration vehicle routing problem"
+  authors:
+    - family-names: "Siverio-González"
+      given-names: "Juan Aday"
+    - family-names: "Melián-Batista"
+      given-names: "Belén"
+    - family-names: "Moreno-Vega"
+      given-names: "J. Marcos"
+  journal: "Expert Systems with Applications"
+  volume: 334
+  start: 134651
+  year: 2027
+  doi: "10.1016/j.eswa.2026.134651"
